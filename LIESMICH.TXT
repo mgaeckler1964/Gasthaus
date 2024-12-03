@@ -1,0 +1,159 @@
+Gasthaus Reservierung 2.0.1                   25. November 2013
+===============================================================
+
+Versionshinweise
+----------------
+-2.0.1 25.11.2013
+-- SQL Reports eingeführt.
+-- XSL Reports eingeführt.
+-- Autovervollständigen bei der Namenseingabe.
+-- Prüfung, ob Tisch oder Raum schon belegt ist, beim Speichern
+   eingeführt.
+-- Mitarbeiterkürzel muß beim Ändern neu eingegeben werden.
+===============================================================
+-2.0.0 6.9.2013
+-- Neue Funktion zum visualisieren der Räume und Tische.
+-- Unterstützung für einen CORBA-Server eingestellt.
+-- Programm um Sichern und Prüfen der Datenbank hinzugefügt.
+-- Lizensierung erfolgt nun über einen Lizenzschlüssel, eine
+   Neuinstallation nach Wechsel der Lizenz ist nicht mehr
+   erforderlich.
+-- Reservierungen können nun auch nach den Namen der Gäste
+   gefiltert werden.
+===============================================================
+-1.2.1 20.12.11
+-- Die Termin- und Feiertagsanzeige wurde nicht aktualisiert,
+   wenn in der Reservierungsliste keine Einträge angezeigt 
+   waren.
+===============================================================
+-1.2.0 30.3.02
+-- Unterstützung für einen CORBA-Server hinzugefügt.
+===============================================================
+-1.1.3 30.10.01
+-- Deutsche Feiertage werden nun automatisch mit angezeigt. Sie
+   müssen also nicht mehr im Feiertagsfenster eingetragen 
+   werden.
+===============================================================
+-1.1.2 19.3.00
+-- Beim Öffnen des Statistikfensters wurde ein Fehler 
+   angezeigt.
+-- Neuer Schalter "Neue Reservierung" im Fenster freie Tische.
+===============================================================
+-1.1.1 19.2.00
+-- Anpassungen für SQL-Datenbanken. Hiermit ist es auch möglich 
+   SQL-Datenbanken wie InterBase oder Oracle zur Datenspei-
+   cherung zu benutzen.
+-- Im Diagrammfenster kann man nun mit der rechten Maustaste 
+   zwischen einer Übersicht der Gäste und der Räume auswählen,
+-- Neues Feld Endezeit. Hiermit kann nun wahlweise auch eine 
+   Endezeit eingetragen werden.
+-- Mitgeliefert wird nun auch ein Programm zur Konvertierung 
+   alter Datenbanken in das neue Format.
+-- In der Version für SQL-Datenbanken wird auch ein Programm 
+   zum Kopieren der Datenbanken mitgeliefert.
+-- Die Verknüpfung mit der Funktion, kann nun auch nachträglich
+   wieder geändert werden.
+===============================================================
+- 1.0.7 18.11.99
+-- Neues Fenster Übersicht. Hiermit kann eine grafische 
+   Übersicht über die belegten Räume des gesammten Zeitraums
+   angezeigt werden.
+===============================================================
+- 1.0.6 29.10.99
+-- Stammtische, die gelöscht wurden, werden auch aus der 
+   Reservierungstabelle entfernt.
+-- Die Schriftart der Reports wurde verkleinert, da sich 
+   herausgestellt hatte, daß das Reportmodul mit großen 
+   Schriften nicht zurecht gekommen ist.
+-- Das Hauptfenster zeigt nun auch die Anzahl der 
+   Reservierungen an.
+-- Der Status "Storniert" wird nun mit einer eigenen Farbe 
+   hinterlegt.
+-- Der Kartenbericht wurde auf das Zweckformformat 105x57 mm
+   umgestellt.
+-- Die Fenster Räume und Tische sind nun nicht mehr modal.
+===============================================================
+- 1.0.5 23.10.99
+-- Hauptfenster:
+--- Neuer Schalter "Neu Laden" zum Aktualisieren der Anzeige.
+--- Die Personenzahl hat nun mehr Platz, um auch 5-stellige
+    Zahlen anzeigen zu können.
+--- Die Funktion "Duplizieren" erzeugt nun keine verknüpfte 
+    Kopie der Reservierung.
+--- Die Funktion zum Löschen einer Reservierung ist entfernt 
+    worden.
+--- Beim Start werden nicht mehr alle Reservierungen sondern 
+    nur noch diejenigen des aktuellen Tages angezeigt.
+--- Die Wochenanzeige fängt nun mit dem Montag an.
+--- Feiertage werden nun auch dann angezeigt, wenn keine 
+    Reservierungen angezeigt werden.
+--- Der Zeitfilter wurde um einige Werte erweitert.
+-- Bearbeitungsfenster:
+--- Das Fenster ist nun nicht mehr modal.
+--- Beim Erstellen einer neuen Reservierung wird nun das 
+    angezeigte Datum nicht mehr das aktuelle Datum übernommen.
+--- Wenn der Raum geändert wird, so wird nun der gespeicherte
+    Tisch entfernt.
+--- Neuer Status "Tagung". Dieser wird auch farblich markiert.
+--- Wenn beim Schließen des Fensters noch nicht gespeichert 
+    wurde, so wird nun eine Abfrage angezeigt.
+--- Beim Ändern der Daten wird automaitsch der Filter des 
+    Hauptfensters angepaßt.
+-- Stammtische:
+--- Wenn Stammtische geändert werden, so werden auch die dazu-
+    gehörigen Reservierungen angepaßt.
+--- Das Datum bis zu welchem der Stammtisch in die 
+    Reservierungstabelle eingetragen wurde, wird nun mit 
+    angezeigt.
+--- Der Zeitraum bis zu dem Stammtische mindestens eingetragen
+    werden, ist nun konfigurierbar.
+-- Sonstiges:
+--- Neue Funktion "Freie Tische". Diese zeigt alle Tische,
+    die an dem angezeigten Tag und Raum noch nicht reserviert 
+    sind.
+--- Die Schrift bei den tabellarischen Berichten wurde 
+    vergrößert.
+===============================================================
+- 1.0.4 27.9.99
+-- Neuer Reservierungsstatus "Option". Reservierungen mit 
+   diesem Status können farblich markiert werden.
+-- Berichte wurden überarbeitet.
+-- Nach dem Eintragen eines neuen Termins, wird die Termin-
+   anzeige aktualisiert.
+-- Nach dem Ändern der Farben wird die Tabelle nun korrekt neu
+   gezeichnet.
+===============================================================
+- 1.0.3 26.9.99
+-- Bemerkungen (extern) wurde umbenannt in Serviceanleitung, 
+   Bemerkungen (intern) wurde umbenannt in Besonderheiten
+-- Gruppierte Listen werden nun im Querformat ausgedruckt.
+-- Beide Listenberichte verwenden nun 1,5 cm Papierrand, damit
+   auch Tintendrucker diese korrekt drucken können.
+-- Vor dem Löschen einer Reservierung muß noch eine Sicher-
+   heitsabfrage beantwortet werden.
+===============================================================
+- 1.0.2 23.9.99
+-- Neues Fenster zum Festlegen der Farben und Logos.
+-- Berichte werden nun mit Logo ausgedruckt.
+-- Der Listenbericht ist nun im Querformat.
+-- Der Name des Gastes wird nun in den Berichten fett gedruckt.
+-- Handbuch erstellt.
+===============================================================
+- 1.0.1 22.9.99
+-- Der Tagesfilter wurde um den Punkt "Ein Tag" erweitert.
+-- Der Tagesfilter zeigt den Zeitraum nur noch an, wenn ein 
+   Zeitraum auch ausgewählt wurde.
+-- Ein zusätzlicher Filter Zeit wurde implementiert.
+-- Der Funktionsstatus und die externen Bemerkungen werden
+   in der Übersicht mit angezeigt.
+-- Der Funktionsstatus "OK" wird durch "Nicht erledigt" 
+   ersetzt.
+-- In der Übersicht werden Zeilen mit dem Funktionsstatus
+   "Nicht erledigt" blau markiert.
+-- Die Formulare "Reservierung bearbeiten" und "Stammtische" 
+   wurden für andere Auflösungen angepaßt.
+-- Der Listenbericht zeigt nun die Gesamtzahl der Personen an.
+-- Neuer Bericht "Gruppierte Liste". 
+===============================================================
+- 1.0 20.9.99 Erste Version
+===============================================================

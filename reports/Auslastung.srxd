@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<sql_report title="" table_name="" record_name="" USER_NAME="" PASSWORD="" DB_ALIAS="GASTHAUS">
+<query>
+<sql>select DATUM, sum(PERSONEN) as PERSONEN
+from RESERVAT
+group by DATUM
+order by DATUM</sql>
+<params />
+</query>
+<chart title="" legend="no" topAxisTitle="" leftAxisTitle="" rightAxisTitle="" bottomAxisTitle="" topAxisGrid="no" leftAxisGrid="no" rightAxisGrid="no" bottomAxisGrid="no">
+<data label="DATUM" value="PERSONEN" title="" type="line" subtype="" color="00FFFF" vaxis="left" haxis="bottom" explode="" others="" mark="" legend="no" />
+</chart>
+</sql_report>

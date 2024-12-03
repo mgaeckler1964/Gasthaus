@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<sql_report title="" table_name="" record_name="" USER_NAME="" PASSWORD="" DB_ALIAS="GASTHAUS">
+<query>
+<sql>select ra.NAME as RAUM, t.TISCH, t.PERSONEN, count(*) as ANZAHL 
+from RESERVAT r, TISCH t, RAUM ra
+where r.TISCH  = t.ID 
+and t.RAUM = ra.ID
+group by ra.NAME, t.TISCH, t.PERSONEN
+order by 4 desc</sql>
+<params />
+</query>
+</sql_report>

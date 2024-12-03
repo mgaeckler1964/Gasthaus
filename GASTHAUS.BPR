@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\object\gasthaus.exe"/>
+    <OBJFILES value="..\..\object\gasthaus\STD\gasthaus.obj 
+      ..\..\object\gasthaus\STD\MainFrm.obj 
+      ..\..\object\gasthaus\STD\EditFrm.obj ..\..\object\gasthaus\STD\RoomFrm.obj 
+      ..\..\object\gasthaus\STD\TableFrm.obj 
+      ..\..\object\gasthaus\STD\SchedFrm.obj 
+      ..\..\object\gasthaus\STD\RepFrm.obj ..\..\object\gasthaus\STD\GroupRep.obj 
+      ..\..\object\gasthaus\STD\CardRep.obj 
+      ..\..\object\gasthaus\STD\SelCdFrm.obj 
+      ..\..\object\gasthaus\STD\AboutFrm.obj 
+      ..\..\object\gasthaus\STD\ConfFrm.obj 
+      ..\..\object\gasthaus\STD\FreeFrm.obj ..\..\object\gasthaus\STD\TableRep.obj 
+      ..\..\object\gasthaus\STD\ChartFrm.obj 
+      ..\..\object\gasthaus\STD\gr_utils.obj 
+      ..\..\object\gasthaus\STD\SelectFrm.obj 
+      ..\..\object\gasthaus\STD\DrawFrm.obj ..\..\object\gasthaus\STD\Config.obj 
+      ..\..\object\gasthaus\STD\LicFrm.obj 
+      ..\..\object\gasthaus\STD\GasthausDM.obj"/>
+    <RESFILES value="gasthaus.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) MainFrm.dfm EditFrm.dfm RoomFrm.dfm TableFrm.dfm SchedFrm.dfm 
+      RepFrm.dfm GroupRep.dfm CardRep.dfm SelCdFrm.dfm AboutFrm.dfm ConfFrm.dfm 
+      FreeFrm.dfm TableRep.dfm ChartFrm.dfm SelectFrm.dfm DrawFrm.dfm 
+      ..\GAKLIB\Repository\Config.dfm ..\GAKLIB\Repository\LicFrm.dfm 
+      GasthausDM.dfm"/>
+    <LIBFILES value="..\..\Object\gaklib\gaklib_bcb.lib"/>
+    <LIBRARIES value="tee50.lib teedb50.lib qrpt50.lib vclx50.lib vcl50.lib vclbde50.lib 
+      vcldb50.lib bcbsmp50.lib"/>
+    <SPARELIBS value="bcbsmp50.lib vcldb50.lib vclbde50.lib vcl50.lib vclx50.lib qrpt50.lib 
+      teedb50.lib tee50.lib"/>
+    <PACKAGES value="vclx50.bpi vcl50.bpi vclsmp50.bpi vcldb50.bpi vclbde50.bpi vcldbx50.bpi 
+      qrpt50.bpi teeui50.bpi teedb50.bpi tee50.bpi"/>
+    <PATHCPP value=".;..\GAKLIB\Repository"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib_ger\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib_ger\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="CLIENT_SERVER=0"/>
+    <SYSDEFINES value="NO_STRICT;_VIS_NOLIB"/>
+    <MAINSOURCE value="gasthaus.cpp"/>
+    <INCLUDEPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include"/>
+    <LIBPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I..\GAKLIB\Repository -If:\object\. -I$(BCB)\include -I$(BCB)\include\vcl 
+      -I$(BCB)\ocx -I..\gaklib\Include -src_suffix cpp -DCLIENT_SERVER=0 -boa"/>
+    <CFLAG1 value="-O2 -H=..\..\object\gasthaus\gasthaus.csm -Hc -w -Vx -Ve -Tkh30000 -X- -a8 
+      -b- -d -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-N2..\..\object\gasthaus\STD -N0..\..\object\gasthaus\STD -$Y- -$L- -$D- 
+      -v -M -JPHNE"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-I..\..\object\gasthaus\STD -D&quot;&quot; -aa -Tpe -GD -s -Gn -w"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=2
+MinorVer=0
+Release=1
+Build=305
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1031
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=CRESD GmbH
+FileDescription=Gasthaus Reservierung Hauptprogramm
+FileVersion=2.0.1.305
+InternalName=Gasthaus
+LegalCopyright=(c) 1999-2013 by CRESD GmbH
+LegalTrademarks=
+OriginalFilename=GASTHAUS.EXE
+ProductName=Gasthaus Reservierung
+ProductVersion=2.0.0.0
+Comments=http://www.cresd.de/
+
+[HistoryLists\hlIncludePath]
+Count=4
+Item0=..\GAKLIB\Repository;f:\object\;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item1=f:\object\;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item2=f:\object;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item3=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+
+[HistoryLists\hlLibraryPath]
+Count=4
+Item0=..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item1=f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item2=f:\object;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item3=$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=8
+Item0=CLIENT_SERVER=0
+Item1=CLIENT_SERVER=0;_DEBUG
+Item2=CLIENT_SERVER=0;CORBA_SERVER=0;CORBA_CLIENT=0
+Item3=CLIENT_SERVER=0;CORBA_SERVER=0;CORBA_CLIENT=0;_DEBUG
+Item4=CLIENT_SERVER=1
+Item5=USEPACKAGES
+Item6=_RTLDLL
+Item7=_RTLDLL;USEPACKAGES
+
+[HistoryLists\hlIntOutputDir]
+Count=3
+Item0=..\..\object\gasthaus\STD
+Item1=..\..\object\gasthaus\STD\
+Item2=F:\object\gasthaus\STD\
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\..\object\
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=1
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

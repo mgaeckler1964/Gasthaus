@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.05.03"/>
+    <PROJECT value="..\..\object\gasthausDB.exe"/>
+    <OBJFILES value="..\..\object\gasthaus\convert\gasthausDB.obj 
+      ..\..\object\gasthaus\convert\dbConvertFrm.obj 
+      ..\..\object\gasthaus\convert\gasthausDbFrm.obj 
+      ..\..\object\gasthaus\convert\Config.obj 
+      ..\..\object\gasthaus\convert\LoginDlg.obj"/>
+    <RESFILES value="gasthausDB.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) ..\GAKLIB\Repository\dbConvertFrm.dfm gasthausDbFrm.dfm 
+      ..\GAKLIB\Repository\Config.dfm ..\GAKLIB\Repository\LoginDlg.dfm"/>
+    <LIBFILES value="..\..\Object\gaklib\gaklib_bcb.lib"/>
+    <LIBRARIES value="vclbde50.lib vcldb50.lib vcl50.lib"/>
+    <SPARELIBS value="vcl50.lib vcldb50.lib vclbde50.lib"/>
+    <PACKAGES value="vcl50.bpi vclx50.bpi vcljpg50.bpi vcldb50.bpi vclbde50.bpi vcldbx50.bpi"/>
+    <PATHCPP value=".;..\GAKLIB\Repository"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib_ger\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib_ger\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="NDEBUG"/>
+    <SYSDEFINES value="NO_STRICT;_VIS_NOLIB"/>
+    <MAINSOURCE value="gasthausDB.cpp"/>
+    <INCLUDEPATH value="..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include"/>
+    <LIBPATH value="..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger"/>
+    <WARNINGS value="-w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I..\GAKLIB\Repository -I$(BCB)\include -I$(BCB)\include\vcl -I$(BCB)\ocx 
+      -I..\gaklib\Include -src_suffix cpp -DNDEBUG -boa"/>
+    <CFLAG1 value="-O2 -H=..\..\object\gasthaus\gasthaus.csm -Hc -w -Vx -Ve -X- -a8 -b- -d 
+      -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-N2..\..\object\gasthaus\convert -N0..\..\object\gasthaus\convert -$Y- 
+      -$L- -$D- -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-I..\..\object\gasthaus\convert -D&quot;&quot; -aa -Tpe -GD -s -Gn -w"/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+  </LINKER>
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=1
+MajorVer=2
+MinorVer=0
+Release=1
+Build=35
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1031
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=CRESD GmbH
+FileDescription=Gasthausreservierung DB Verwaltung
+FileVersion=2.0.1.35
+InternalName=
+LegalCopyright=(c) 1999-2013 by CRESD GmbH
+LegalTrademarks=
+OriginalFilename=
+ProductName=Gasthaus Reservierung
+ProductVersion=2.0.0.0
+Comments=http://www.cresd.de/
+
+[HistoryLists\hlIncludePath]
+Count=6
+Item0=..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item1=..\GAKLIB\VCL_TOOLS;..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item2=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl
+Item4=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl
+Item5=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=5
+Item0=..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item1=$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item2=..\GAKLIB\VCL_TOOLS;..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item3=C:\Program Files (x86)\Borland\CBuilder5\Projects\;..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item4=C:\Program Files (x86)\Borland\CBuilder5\Projects;..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=3
+Item0=NDEBUG
+Item1=NDEBUG;_DEBUG
+Item2=_DEBUG
+
+[HistoryLists\hlIntOutputDir]
+Count=3
+Item0=..\..\object\gasthaus\convert
+Item1=..\..\object\gasthaus\convert\
+Item2=F:\object\gasthaus\convert\
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=..\..\object\
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=1
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

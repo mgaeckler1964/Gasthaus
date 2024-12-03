@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<sql_report title="Gäste mit Telefon" table_name="" record_name="" USER_NAME="" PASSWORD="" DB_ALIAS="GASTHAUS">
+<query>
+<sql>select Name, Telefon, count(*) as Anzahl
+from RESERVAT
+group by Name, Telefon</sql>
+<params />
+</query>
+</sql_report>
