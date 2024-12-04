@@ -65,7 +65,7 @@ void TGasthausDataModule::loadTables(
 {
 	ROOM_INFO	&theRoom = rooms[roomIdx];
 
-	if( !theRoom.tables.getNumElements() )
+	if( !theRoom.tables.size() )
 	{
 		TABLE_INFO	tableInfo;
 
@@ -113,7 +113,7 @@ void TGasthausDataModule::loadTables(
 	if( ComboBoxTable )
 	{
 		ComboBoxTable->Items->Clear();
-		for( size_t i=0; i<theRoom.tables.getNumElements(); i++ )
+		for( size_t i=0; i<theRoom.tables.size(); i++ )
 		{
 			const TABLE_INFO	&tableInfo = theRoom.tables[i];
 			ComboBoxTable->Items->Add( (const char *)tableInfo.name );
@@ -153,7 +153,7 @@ void TGasthausDataModule::loadTableUsage(
 
 	for(
 		size_t tableIdx=0;
-		tableIdx<theRoom.tables.getNumElements();
+		tableIdx<theRoom.tables.size();
 		tableIdx++
 	)
 	{
@@ -163,7 +163,7 @@ void TGasthausDataModule::loadTableUsage(
 	}
 	for(
 		size_t tableIdx=0;
-		tableIdx<theRoom.tables.getNumElements();
+		tableIdx<theRoom.tables.size();
 		tableIdx++
 	)
 	{
@@ -199,7 +199,7 @@ void TGasthausDataModule::loadTableUsage(
 					{
 						for(
 							size_t tableIdx=0;
-							tableIdx<theRoom.tables.getNumElements();
+							tableIdx<theRoom.tables.size();
 							tableIdx++
 						)
 						{
@@ -217,7 +217,7 @@ void TGasthausDataModule::loadTableUsage(
 					{
 						for(
 							size_t tableIdx=0;
-							tableIdx<theRoom.tables.getNumElements();
+							tableIdx<theRoom.tables.size();
 							tableIdx++
 						)
 						{
@@ -235,21 +235,21 @@ void TGasthausDataModule::loadTableUsage(
 					{
 						for(
 							size_t tableIdx=0;
-							tableIdx<theRoom.tables.getNumElements();
+							tableIdx<theRoom.tables.size();
 							tableIdx++
 						)
 						{
 							TABLE_INFO	&subTableInfo = theRoom.tables[tableIdx];
-							doLogString( subTableInfo.name );
+							doLogValue( subTableInfo.name );
 							if( subTableInfo.shape == COMBI_TABLE
 							&&  isInRect( tableInfo, subTableInfo ) )
 							{
-								doLogValue( "%d", subTableInfo.besetzt );
+								doLogValue( subTableInfo.besetzt );
 								if( !subTableInfo.personenI )
 									subTableInfo.besetzt += checkSQL->Fields->Fields[2]->AsInteger;
 								else
 									subTableInfo.besetzt = subTableInfo.personenI;
-								doLogValue( "%d", subTableInfo.besetzt );
+								doLogValue( subTableInfo.besetzt );
 							}
 						}
 					}
@@ -273,7 +273,7 @@ void TGasthausDataModule::loadTables(
 	bool		loadUsage;
 	ROOM_INFO	&theRoom = rooms[roomIdx];
 
-	loadUsage = !theRoom.tables.getNumElements();
+	loadUsage = !theRoom.tables.size();
 	if( loadUsage || ComboBoxTable )
 		loadTables( roomIdx, ComboBoxTable, paintBoxWidth, paintBoxHeight );
 	if( loadUsage )
@@ -320,7 +320,7 @@ int TGasthausDataModule::getRoomForTable( int tableID )
 int TGasthausDataModule::findRoom( int roomID )
 {
 	int roomIdx;
-	for( roomIdx=rooms.getNumElements()-1; roomIdx >= 0; roomIdx-- )
+	for( roomIdx=rooms.size()-1; roomIdx >= 0; roomIdx-- )
 	{
 		ROOM_INFO	&theRoom = rooms[roomIdx];
 		if( theRoom.ID == roomID )
@@ -342,7 +342,7 @@ int TGasthausDataModule::getFreePlaces(
 	loadTables( roomIdx, NULL, 0, 0 );
 	loadTableUsage( roomIdx, selDatum, selStartTime, selEndTime, selId, true );
 	ROOM_INFO	&theRoom = rooms[roomIdx];
-	for( size_t tableIdx = 0; tableIdx < theRoom.tables.getNumElements(); tableIdx++ )
+	for( size_t tableIdx = 0; tableIdx < theRoom.tables.size(); tableIdx++ )
 	{
 		const TABLE_INFO &theTable = theRoom.tables[tableIdx];
 		if( theTable.ID == tableID )
@@ -374,7 +374,7 @@ int TGasthausDataModule::getReservations(
 	loadTables( roomIdx, NULL, 0, 0 );
 	loadTableUsage( roomIdx, selDatum, selStartTime, selEndTime, selId, false );
 	ROOM_INFO	&theRoom = rooms[roomIdx];
-	for( size_t tableIdx = 0; tableIdx < theRoom.tables.getNumElements(); tableIdx++ )
+	for( size_t tableIdx = 0; tableIdx < theRoom.tables.size(); tableIdx++ )
 	{
 		const TABLE_INFO &theTable = theRoom.tables[tableIdx];
 		numPersons += theTable.besetzt;

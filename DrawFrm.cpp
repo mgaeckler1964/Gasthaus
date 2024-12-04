@@ -5,6 +5,9 @@
 
 #include "DrawFrm.h"
 #include "GasthausDM.h"
+
+using namespace gak;
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -24,7 +27,7 @@ void __fastcall TDrawingForm::PaintBoxMouseUp(TObject *,
 		int roomIdx = ComboBoxRooms->ItemIndex;
 		if( roomIdx >= 0 )
 		{
-			ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+			Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
 			if( RadioButtonRoom->Checked )
 			{
@@ -57,7 +60,7 @@ void __fastcall TDrawingForm::PaintBoxMouseUp(TObject *,
 
 					theRoom.points.addElement( nextPoint );
 
-					if( theRoom.points.getNumElements() < 3 )
+					if( theRoom.points.size() < 3 )
 					{
 						lastMousePos.x = -1;
 						lastMousePos.y = -1;
@@ -92,7 +95,7 @@ void __fastcall TDrawingForm::PaintBoxMouseUp(TObject *,
 						double	newLeft = paintBoxWidth;
 						double	newRight = 0;
 
-						for( size_t i=0; i<theRoom.tables.getNumElements(); i++ )
+						for( size_t i=0; i<theRoom.tables.size(); i++ )
 						{
 							if( i != (size_t)tableIdx )
 							{
@@ -138,12 +141,12 @@ void __fastcall TDrawingForm::PaintBoxMouseMove(TObject *,
 	int roomIdx = ComboBoxRooms->ItemIndex;
 	if( roomIdx >= 0 )
 	{
-		ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+		Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
 		if( RadioButtonRoom->Checked && drawMode == NEXT_ROOM_POINT )
 		{
 			ROOM_INFO	&theRoom = rooms[roomIdx];
-			size_t		numPoints = theRoom.points.getNumElements();
+			size_t		numPoints = theRoom.points.size();
 			PREC_POINT	&last = theRoom.points[numPoints-1];
 
 			canvas->Pen->Width = 1;
@@ -232,15 +235,15 @@ void __fastcall TDrawingForm::PaintBoxPaint(TObject *)
 	int roomIdx = ComboBoxRooms->ItemIndex;
 	if( roomIdx >= 0 )
 	{
-		ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+		Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
 		ROOM_INFO	&theRoom = rooms[roomIdx];
 
-		if( theRoom.points.getNumElements() > 1 )
+		if( theRoom.points.size() > 1 )
 		{
 			canvas->Pen->Color = clGray;
 			canvas->Pen->Width = 3;
-			for( size_t i=0; i<theRoom.points.getNumElements(); i++ )
+			for( size_t i=0; i<theRoom.points.size(); i++ )
 			{
 				PREC_POINT &coordinates = theRoom.points[i];
 
@@ -249,7 +252,7 @@ void __fastcall TDrawingForm::PaintBoxPaint(TObject *)
 				else
 					canvas->LineTo( coordinates.x, coordinates.y );
 			}
-			if( theRoom.points.getNumElements() > 2 )
+			if( theRoom.points.size() > 2 )
 			{
 				PREC_POINT &coordinates = theRoom.points[0];
 
@@ -258,7 +261,7 @@ void __fastcall TDrawingForm::PaintBoxPaint(TObject *)
 		}
 		canvas->Pen->Color = clBlack;
 		canvas->Pen->Width = 1;
-		for( size_t i=0; i<theRoom.tables.getNumElements(); i++ )
+		for( size_t i=0; i<theRoom.tables.size(); i++ )
 		{
 			TABLE_INFO	&theTable = theRoom.tables[i];
 			if( theTable.left > 0
@@ -324,7 +327,7 @@ void __fastcall TDrawingForm::FormKeyPress(TObject *, char &Key)
 			int tableIdx =  ComboBoxTables->ItemIndex;
 			if( tableIdx >= 0 )
 			{
-				ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+				Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
 				ROOM_INFO	&theRoom = rooms[roomIdx];
 				TABLE_INFO	&theTable = theRoom.tables[tableIdx];
@@ -397,33 +400,33 @@ void __fastcall TDrawingForm::FormResize(TObject *)
 	int paintBoxWidth = PaintBox->Width;
 	int paintBoxHeight = PaintBox->Height;
 
-	doLogValue( "%d", this->paintBoxWidth );
-	doLogValue( "%d", this->paintBoxHeight );
-	doLogValue( "%d", paintBoxWidth );
-	doLogValue( "%d", paintBoxHeight );
+	doLogValue( this->paintBoxWidth );
+	doLogValue( this->paintBoxHeight );
+	doLogValue( paintBoxWidth );
+	doLogValue( paintBoxHeight );
 
-	ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+	Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
-	for( size_t	roomIdx=0; roomIdx<rooms.getNumElements(); roomIdx++ )
+	for( size_t	roomIdx=0; roomIdx<rooms.size(); roomIdx++ )
 	{
 		ROOM_INFO	&theRoom = rooms[roomIdx];
 
-		for( size_t pointIdx=0; pointIdx<theRoom.points.getNumElements(); pointIdx++ )
+		for( size_t pointIdx=0; pointIdx<theRoom.points.size(); pointIdx++ )
 		{
 			PREC_POINT	&thePoint = theRoom.points[pointIdx];
 
-			doLogValue( "%f", thePoint.x );
+			doLogValue( thePoint.x );
 			thePoint.x = toScreen(
 				paintBoxWidth, toNormal( this->paintBoxWidth, thePoint.x )
 			);
-			doLogValue( "%f", thePoint.x );
-			doLogValue( "%f", thePoint.y );
+			doLogValue( thePoint.x );
+			doLogValue( thePoint.y );
 			thePoint.y = toScreen(
 				paintBoxHeight, toNormal( this->paintBoxHeight, thePoint.y )
 			);
-			doLogValue( "%f", thePoint.y );
+			doLogValue( thePoint.y );
 		}
-		for( size_t tableIdx=0; tableIdx<theRoom.tables.getNumElements(); tableIdx++ )
+		for( size_t tableIdx=0; tableIdx<theRoom.tables.size(); tableIdx++ )
 		{
 			TABLE_INFO	&theTable = theRoom.tables[tableIdx];
 
@@ -443,7 +446,6 @@ void __fastcall TDrawingForm::FormResize(TObject *)
 	}
 	this->paintBoxWidth = paintBoxWidth;
 	this->paintBoxHeight = paintBoxHeight;
-	doShowLog();
 }
 //---------------------------------------------------------------------------
 
@@ -454,9 +456,9 @@ void __fastcall TDrawingForm::FormClose(TObject *,
 	TQuery	*updateSQL = new TQuery( this );
 	updateSQL->DatabaseName = "Gasthaus";
 
-	ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+	Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 
-	for( size_t	roomIdx=0; roomIdx<rooms.getNumElements(); roomIdx++ )
+	for( size_t	roomIdx=0; roomIdx<rooms.size(); roomIdx++ )
 	{
 		ROOM_INFO	&theRoom = rooms[roomIdx];
 
@@ -467,7 +469,7 @@ void __fastcall TDrawingForm::FormClose(TObject *,
 		updateSQL->Params->Items[0]->AsInteger = theRoom.ID;
 		updateSQL->ExecSQL();
 
-		if( theRoom.points.getNumElements() > 2 )
+		if( theRoom.points.size() > 2 )
 		{
 			updateSQL->SQL->Clear();
 			updateSQL->SQL->Add(
@@ -478,7 +480,7 @@ void __fastcall TDrawingForm::FormClose(TObject *,
 			);
 			updateSQL->Params->Items[0]->AsInteger = theRoom.ID;
 
-			for( size_t pointIdx=0; pointIdx<theRoom.points.getNumElements(); pointIdx++ )
+			for( size_t pointIdx=0; pointIdx<theRoom.points.size(); pointIdx++ )
 			{
 				PREC_POINT	&thePoint = theRoom.points[pointIdx];
 
@@ -498,7 +500,7 @@ void __fastcall TDrawingForm::FormClose(TObject *,
 			"where ID = :theTable"
 		);
 
-		for( size_t tableIdx=0; tableIdx<theRoom.tables.getNumElements(); tableIdx++ )
+		for( size_t tableIdx=0; tableIdx<theRoom.tables.size(); tableIdx++ )
 		{
 			TABLE_INFO	&theTable = theRoom.tables[tableIdx];
 
@@ -524,9 +526,9 @@ void __fastcall TDrawingForm::ResetDrawMode(TObject *)
 	int roomIdx = ComboBoxRooms->ItemIndex;
 	if( roomIdx >= 0 )
 	{
-		ARRAY<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
+		Array<ROOM_INFO> &rooms = GasthausDataModule->getRooms();
 		ROOM_INFO	&theRoom = rooms[roomIdx];
-		if( theRoom.points.getNumElements() < 3 )
+		if( theRoom.points.size() < 3 )
 		{
 			theRoom.points.clear();
 		}

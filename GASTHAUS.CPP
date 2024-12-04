@@ -21,7 +21,6 @@ USELIB("..\..\Object\gaklib\gaklib_bcb.lib");
 USEFORM("SelectFrm.cpp", SelectForm);
 USEFORM("DrawFrm.cpp", DrawingForm);
 USEFORM("..\GAKLIB\Repository\Config.cpp", ConfigDataModule); /* TDataModule: File Type */
-USEFORM("..\GAKLIB\Repository\LicFrm.cpp", LicenceForm);
 USEFORM("GasthausDM.cpp", GasthausDataModule); /* TDataModule: File Type */
 //---------------------------------------------------------------------------
 char	dbAliasName[256];
@@ -50,7 +49,6 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR cmdLine, int)
 		Application->CreateForm(__classid(TSelectForm), &SelectForm);
 		Application->CreateForm(__classid(TDrawingForm), &DrawingForm);
 		Application->CreateForm(__classid(TConfigDataModule), &ConfigDataModule);
-		Application->CreateForm(__classid(TLicenceForm), &LicenceForm);
 		Application->CreateForm(__classid(TGasthausDataModule), &GasthausDataModule);
 		Application->Run();
 	}

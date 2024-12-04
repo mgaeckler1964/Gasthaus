@@ -22,7 +22,7 @@ typedef enum
 struct TABLE_INFO
 {
 	int 			ID;
-	STRING			name, personenStr;
+	gak::STRING		name, personenStr;
 	int				besetzt, personenI;
 
 	TABLE_SHAPE		shape;
@@ -36,10 +36,10 @@ struct PREC_POINT
 //---------------------------------------------------------------------------
 struct ROOM_INFO
 {
-	int					ID;
-	STRING				name;
-	ARRAY<PREC_POINT>	points;
-	ARRAY<TABLE_INFO>	tables;
+	int						ID;
+	gak::STRING				name;
+	gak::Array<PREC_POINT>	points;
+	gak::Array<TABLE_INFO>	tables;
 };
 //---------------------------------------------------------------------------
 inline double toScreen( int screenSize, double value )
@@ -76,12 +76,12 @@ inline bool isInRect( const TPoint &mousePos, const TABLE_INFO &theTable )
 
 	bool result = true;
 
-	doLogValue( "%d", mousePos.x );
-	doLogValue( "%d", mousePos.y );
-	doLogValue( "%lf", theTable.top );
-	doLogValue( "%lf", theTable.bottom );
-	doLogValue( "%lf", theTable.left );
-	doLogValue( "%lf", theTable.right );
+	doLogValue( mousePos.x );
+	doLogValue( mousePos.y );
+	doLogValue( theTable.top );
+	doLogValue( theTable.bottom );
+	doLogValue( theTable.left );
+	doLogValue( theTable.right );
 
 	if( mousePos.y < (int)(theTable.top-0.5) )
 	{
@@ -104,8 +104,7 @@ inline bool isInRect( const TPoint &mousePos, const TABLE_INFO &theTable )
 		result = false;
 	}
 
-	doLogValue( "%d", (int)result );
-	doShowLog();
+	doLogValue( result );
 	return result;
 }
 //---------------------------------------------------------------------------
@@ -124,8 +123,7 @@ inline bool isInRect( const TABLE_INFO &theTable, const TABLE_INFO &theCombiTabl
 /*v*/		break;
 	}
 
-	doLogValue( "%d", (int)result );
-	doShowLog();
+	doLogValue( result );
 	return result;
 }
 
@@ -152,7 +150,7 @@ __published:	// IDE-managed Components
 	TIntegerField *PointTableX_POS;
 	TIntegerField *PointTableY_POS;
 private:	// User declarations
-	ARRAY<ROOM_INFO>	rooms;
+	gak::Array<ROOM_INFO>	rooms;
 public:		// User declarations
 	__fastcall TGasthausDataModule(TComponent* Owner);
 
@@ -208,7 +206,7 @@ public:		// User declarations
 		TTime selStartTime, TTime selEndTime,
 		int selId
 	);
-	ARRAY<ROOM_INFO> &getRooms( void )
+	gak::Array<ROOM_INFO> &getRooms( void )
 	{
 		return rooms;
 	}

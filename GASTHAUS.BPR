@@ -19,7 +19,6 @@
       ..\..\object\gasthaus\STD\gr_utils.obj 
       ..\..\object\gasthaus\STD\SelectFrm.obj 
       ..\..\object\gasthaus\STD\DrawFrm.obj ..\..\object\gasthaus\STD\Config.obj 
-      ..\..\object\gasthaus\STD\LicFrm.obj 
       ..\..\object\gasthaus\STD\GasthausDM.obj"/>
     <RESFILES value="gasthaus.res"/>
     <IDLFILES value=""/>
@@ -28,8 +27,7 @@
     <RESDEPEN value="$(RESFILES) MainFrm.dfm EditFrm.dfm RoomFrm.dfm TableFrm.dfm SchedFrm.dfm 
       RepFrm.dfm GroupRep.dfm CardRep.dfm SelCdFrm.dfm AboutFrm.dfm ConfFrm.dfm 
       FreeFrm.dfm TableRep.dfm ChartFrm.dfm SelectFrm.dfm DrawFrm.dfm 
-      ..\GAKLIB\Repository\Config.dfm ..\GAKLIB\Repository\LicFrm.dfm 
-      GasthausDM.dfm"/>
+      ..\GAKLIB\Repository\Config.dfm GasthausDM.dfm"/>
     <LIBFILES value="..\..\Object\gaklib\gaklib_bcb.lib"/>
     <LIBRARIES value="tee50.lib teedb50.lib qrpt50.lib vclx50.lib vcl50.lib vclbde50.lib 
       vcldb50.lib bcbsmp50.lib"/>
@@ -48,7 +46,7 @@
     <SYSDEFINES value="NO_STRICT;_VIS_NOLIB"/>
     <MAINSOURCE value="gasthaus.cpp"/>
     <INCLUDEPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include"/>
-    <LIBPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger"/>
+    <LIBPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_uk\obj;$(BCB)\lib_uk\release;$(BCB)\lib_uk"/>
     <WARNINGS value="-w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>
@@ -75,7 +73,7 @@ AutoIncBuild=1
 MajorVer=2
 MinorVer=0
 Release=1
-Build=305
+Build=306
 Debug=0
 PreRelease=0
 Special=0
@@ -87,7 +85,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=CRESD GmbH
 FileDescription=Gasthaus Reservierung Hauptprogramm
-FileVersion=2.0.1.305
+FileVersion=2.0.1.306
 InternalName=Gasthaus
 LegalCopyright=(c) 1999-2013 by CRESD GmbH
 LegalTrademarks=
@@ -104,11 +102,13 @@ Item2=f:\object;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
 Item3=$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include
 
 [HistoryLists\hlLibraryPath]
-Count=4
-Item0=..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
-Item1=f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
-Item2=f:\object;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
-Item3=$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Count=6
+Item0=..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_uk\obj;$(BCB)\lib_uk\release;$(BCB)\lib_uk
+Item1=..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_uk\obj;$(BCB)\lib_uk
+Item2=..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item3=f:\object\;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item4=f:\object;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
+Item5=$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger
 
 [HistoryLists\hlDebugSourcePath]
 Count=1

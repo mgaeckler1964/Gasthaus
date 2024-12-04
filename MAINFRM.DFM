@@ -21,7 +21,7 @@ object MainForm: TMainForm
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 961
+    Width = 953
     Height = 121
     Align = alTop
     TabOrder = 0
@@ -228,8 +228,8 @@ object MainForm: TMainForm
   object ReservationGrid: TDBGrid
     Left = 0
     Top = 121
-    Width = 961
-    Height = 301
+    Width = 953
+    Height = 288
     Align = alClient
     DataSource = reservatSource
     DefaultDrawing = False
@@ -460,13 +460,6 @@ object MainForm: TMainForm
         OnClick = FreieTische1Click
       end
       object N1: TMenuItem
-        Caption = '-'
-      end
-      object Lizenz1: TMenuItem
-        Caption = 'Lizenz...'
-        OnClick = Lizenz1Click
-      end
-      object N7: TMenuItem
         Caption = '-'
       end
       object Ende1: TMenuItem

@@ -14,17 +14,13 @@
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 
+using namespace gak;
+
 TEditForm *EditForm;
 
 //---------------------------------------------------------------------------
-static int customerCmp(const CUSTOMER *elem1, const CUSTOMER *elem2, const void *)
-{
-	return strcmpi( elem1->name, elem2->name ); 
-}
-
-//---------------------------------------------------------------------------
 __fastcall TEditForm::TEditForm(TComponent* Owner)
-	: clients(customerCmp), TForm(Owner)
+	: TForm(Owner)
 {
 	currentReservation = 0;
 	currentDate = 0;
@@ -286,7 +282,7 @@ void __fastcall TEditForm::FormShow(TObject *)
 
 	RoomsComboBox->ItemIndex = -1;
 
-	if( !clients.getNumElements() )
+	if( !clients.size() )
 	{
 		CUSTOMER	client;
 
@@ -453,7 +449,7 @@ void __fastcall TEditForm::DBEditNameKeyPress(TObject *, char &Key)
 		size_t	pos = clients.findInsertPos( client );
 		if( pos )
 			pos--;
-		for( size_t i=pos; i<clients.getNumElements(); i++ )
+		for( size_t i=pos; i<clients.size(); i++ )
 		{
 			const CUSTOMER	&client = clients[i];
 			if( client.name.beginsWith( text ) )

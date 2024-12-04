@@ -87,8 +87,6 @@ __published:	// IDE-managed Components
 	TMenuItem *Zeichnen1;
 	TMenuItem *N6;
 	TEdit *EditName;
-	TMenuItem *N7;
-	TMenuItem *Lizenz1;
 	TMenuItem *MenuSQLreports;
 	TMenuItem *MenuHTMLreports;
 	void __fastcall Rume1Click(TObject *Sender);
@@ -132,7 +130,6 @@ __published:	// IDE-managed Components
 	void __fastcall Berechnungbeenden1Click(TObject *Sender);
 	void __fastcall Zeichnen1Click(TObject *Sender);
 	void __fastcall EditNameChange(TObject *Sender);
-	void __fastcall Lizenz1Click(TObject *Sender);
 private:	// User declarations
 	TDateTime	startDate, endDate, lastDate;
 	TDateTime	startTime, endTime;

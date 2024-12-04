@@ -20,6 +20,8 @@
 
 TConfigForm *ConfigForm;
 
+using namespace gak;
+
 static AnsiString readRegistration( const char *var, bool publicVal = FALSE )
 {
 	long		openResult;
@@ -192,7 +194,7 @@ void __fastcall TConfigForm::FormCreate(TObject *)
 		StammtischEdit->Text = "100";
 
 	STRING reportPath = ConfigDataModule->GetValue(
-		MainForm->GasthausDB, "reportPath", "reports\\"
+		"reportPath", "reports\\"
 	);
 	EditReports->Text = (const char *)reportPath;
 }
@@ -216,7 +218,7 @@ void __fastcall TConfigForm::ButtonOKClick(TObject *)
 	if( !reportPath.isEmpty() && !reportPath.endsWith( DIRECTORY_DELIMITER ) )
 		reportPath += DIRECTORY_DELIMITER;
 
-	ConfigDataModule->SetValue( MainForm->GasthausDB, "reportPath", reportPath );
+	ConfigDataModule->SetValue( "reportPath", reportPath );
 }
 //---------------------------------------------------------------------------
 

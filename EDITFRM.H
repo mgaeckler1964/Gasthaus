@@ -15,15 +15,20 @@
 #include <Menus.hpp>
 
 #include <gak/ci_string.h>
-#include <gak/sorted_array.h>
+#include <gak/sortedArray.h>
 
 //---------------------------------------------------------------------------
 struct CUSTOMER
 {
-	CI_STRING	name, telefon;
+	gak::CI_STRING	name, telefon;
 
-	CUSTOMER( void ){}; 
-	CUSTOMER( const CI_STRING &newName ) : name( newName ) {};
+	CUSTOMER( void ){};
+	CUSTOMER( const gak::CI_STRING &newName ) : name( newName ) {};
+
+	int compare( const CUSTOMER &c2 )
+	{
+		return strcmpi( name, c2.name );
+	}
 };
 
 class TEditForm : public TForm
@@ -119,8 +124,8 @@ private:	// User declarations
 	void fillRooms( void );
 	void fillTables( void );
 
-	SORTED_ARRAY<CUSTOMER>	clients;
-	bool					changePhone;
+	gak::SortedArray<CUSTOMER>	clients;
+	bool						changePhone;
 
 public:		// User declarations
 	void setReservation( long reservationId );

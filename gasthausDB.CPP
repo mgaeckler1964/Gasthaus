@@ -7,6 +7,8 @@ USEFORM("gasthausDbFrm.cpp", GasthausDbForm);
 USELIB("..\..\Object\gaklib\gaklib_bcb.lib");
 USEFORM("..\GAKLIB\Repository\Config.cpp", ConfigDataModule); /* TDataModule: File Type */
 USEFORM("..\GAKLIB\Repository\LoginDlg.cpp", LoginForm);
+USEFORM("..\GAKLIB\Repository\StatusFrm.cpp", StatusForm);
+USELIB("..\..\object\winlib\winlibBCB.lib");
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -18,6 +20,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->CreateForm(__classid(TDbConvertForm), &DbConvertForm);
 		Application->CreateForm(__classid(TConfigDataModule), &ConfigDataModule);
 		Application->CreateForm(__classid(TLoginForm), &LoginForm);
+		Application->CreateForm(__classid(TStatusForm), &StatusForm);
 		Application->Run();
 	}
 	catch (Exception &exception)

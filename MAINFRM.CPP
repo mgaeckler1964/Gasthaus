@@ -6,6 +6,8 @@
 
 #include <gak/date.h>
 #include <gak/vcl_tools.h>
+#include <gak/directory.h>
+#include <gak/fcopy.h>
 
 #pragma hdrstop
 
@@ -26,7 +28,6 @@
 #include "gr_utils.h"
 #include "DrawFrm.h"
 #include "Config.h"
-#include "LicFrm.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -34,6 +35,7 @@
 TMainForm *MainForm;
 
 #define LICENCE_CODE		59834981L
+using namespace gak;
 
 //---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
@@ -59,7 +61,7 @@ void TMainForm::checkEvents( bool ignoreLastDate )
 		lastDate = currentDate;
 		currentDate.DecodeDate( &year, &month, &day );
 
-		GAK_DATE	gakDate(day, (GAK_MONTH)month, year);
+		gak::Date	gakDate(day, gak::Date::Month(month), year);
 		termine = gakDate.holiday();
 		if( termine > "" )
 			termine += " ";
@@ -457,7 +459,7 @@ void __fastcall TMainForm::Tische1Click(TObject *)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SqlReportClick(TObject *Sender)
 {
-	STRING theReport = ConfigDataModule->GetValue( GasthausDB, "reportPath", "reports\\" );
+	STRING theReport = ConfigDataModule->GetValue( "reportPath", "reports\\" );
 	theReport += ((TMenuItem*)Sender)->Caption.c_str();
 
 	theReport = makeFullPath( (STRING)Application->ExeName.c_str(), theReport );
@@ -471,7 +473,7 @@ void __fastcall TMainForm::SqlReportClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::HtmlReportClick(TObject *Sender)
 {
-	STRING theReport = ConfigDataModule->GetValue( GasthausDB, "reportPath", "reports\\" );
+	STRING theReport = ConfigDataModule->GetValue( "reportPath", "reports\\" );
 	STRING	selXSL = ((TMenuItem*)Sender)->Caption.c_str();
 	theReport += selXSL;
 
@@ -484,13 +486,13 @@ void __fastcall TMainForm::HtmlReportClick(TObject *Sender)
 	destXML += "gasthaus.xml";
 
 	fcopy( theReport, destXSL );
-	XML_ANY	*theData = exportTable2XML( reservatQuery, "gasthaus", "reservierung", 3 );
+	xml::Any	*theData = vcl::exportTable2XML( reservatQuery, "gasthaus", "reservierung", 3 );
 
 	if( theData )
 	{
 		STRING	xmlCode = theData->generateDoc( "", selXSL );
-		doLogString( xmlCode );
-		ofstream	fStream( destXML );
+		doLogValue( xmlCode );
+		std::ofstream	fStream( destXML );
 		if( fStream.is_open() )
 			fStream << xmlCode;
 		delete theData;
@@ -518,72 +520,7 @@ void __fastcall TMainForm::FormShow(TObject *)
 		abort();
 	}
 
-	LicenceForm->readLicence( "Gasthaus", LICENCE_CODE );
-	if( !LicenceForm->checkLicence( LICENCE_CODE ) )
-		LicenceForm->ShowModal();
-
-	if( !LicenceForm->checkLicence( LICENCE_CODE ) )
-	{
-		Close();
-/*@*/	return;
-	}
-
-	while( true )
-	{
-		AnsiString	tmp, product = LicenceForm->productEdit->Text;
-		AnsiString	error = "";
-		int			dashPos = product.LastDelimiter( "-" );
-
-		if( dashPos > 0 )
-		{
-			AnsiString		dateStr = product.SubString( dashPos+1, product.Length() - dashPos );
-			int				lastMonth, lastYear;
-
-			sscanf( dateStr.c_str(), "%d:%d", &lastMonth, &lastYear );
-
-			TDateTime		now = TDateTime::CurrentDate();
-			unsigned short	thisYear, thisMonth, dummy;
-			now.DecodeDate( &thisYear, &thisMonth, &dummy );
-
-			if( thisYear > lastYear
-			|| (thisYear == lastYear && thisMonth > lastMonth) )
-			{
-				error = "Testlizenz abgelaufen";
-			}
-
-			product = product.SubString( 1, dashPos-1 );
-		}
-
-		if( product != "GasthausSQL" && product != "Gasthaus" )
-			error = "Falscher Produktcode";
-		else if( product != "GasthausSQL" && GasthausDB->IsSQLBased )
-			error = "Keine gültige Lizenz für die Verwendung dieser Datenbank";
-
-		if( error.Length() )
-		{
-			Application->MessageBox(
-				error.c_str(), "Fehler", MB_ICONSTOP
-			);
-			if( LicenceForm->ShowModal() == mrOk )
-/*^*/			continue;
-			else
-			{
-				Close();
-/*@*/			return;
-			}
-		}
-
-		if( product == "GasthausSQL" )
-		{
-			AnsiString newCaption = Caption;
-			newCaption += " Client/Server";
-			Caption = newCaption;
-			Application->Title = newCaption;
-		}
-
-		break;
-	}
-
+	ConfigDataModule->setDatabase(GasthausDB);
 
 	getRepeatedReservations(atoi( ConfigForm->StammtischEdit->Text.c_str() ));
 
@@ -607,19 +544,24 @@ void __fastcall TMainForm::FormShow(TObject *)
 //		exit( -1 );
 	}
 
-	ARRAY_OF_STRINGS	reports;
-	STRING 	reportPath = ConfigDataModule->GetValue( GasthausDB, "reportPath", "reports\\" );
+	DirectoryList	reports;
+	STRING 	reportPath = ConfigDataModule->GetValue( "reportPath", "reports\\" );
 	STRING reportPattern = reportPath + "*.srx";
 	reportPattern = makeFullPath( (STRING)Application->ExeName.c_str(), reportPattern );
-
-	findFiles( reportPattern, reports );
+	reports.findFiles( reportPattern );
 
 	MenuSQLreports->AutoHotkeys = maManual;
-	for( size_t i=0; i<reports.getNumElements(); i++ )
+	for(
+		DirectoryList::const_iterator it = reports.cbegin(), endIT = reports.cend();
+		it != endIT;
+		++it
+	)
 	{
+		const DirectoryEntry		&listEntry = *it;
+
 		TMenuItem *newMenu = new TMenuItem( this );
 		newMenu->AutoHotkeys = maManual;
-		newMenu->Caption = (const char *)reports[i];
+		newMenu->Caption = listEntry.fileName;
 		newMenu->OnClick = SqlReportClick;
 
 		MenuSQLreports->Add( newMenu );
@@ -628,14 +570,19 @@ void __fastcall TMainForm::FormShow(TObject *)
 	reports.clear();
 	reportPattern = reportPath + "*.xsl";
 	reportPattern = makeFullPath( (STRING)Application->ExeName.c_str(), reportPattern );
-	findFiles( reportPattern, reports );
+	reports.findFiles( reportPattern );
 
 	MenuHTMLreports->AutoHotkeys = maManual;
-	for( size_t i=0; i<reports.getNumElements(); i++ )
+	for(
+		DirectoryList::const_iterator it = reports.cbegin(), endIT = reports.cend();
+		it != endIT;
+		++it
+	)
 	{
+		const DirectoryEntry		&listEntry = *it;
 		TMenuItem *newMenu = new TMenuItem( this );
 		newMenu->AutoHotkeys = maManual;
-		newMenu->Caption = (const char *)reports[i];
+		newMenu->Caption = listEntry.fileName;
 		newMenu->OnClick = HtmlReportClick;
 
 		MenuHTMLreports->Add( newMenu );
@@ -962,11 +909,6 @@ void __fastcall TMainForm::EditNameChange(TObject *)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TMainForm::Lizenz1Click(TObject *)
-{
-	LicenceForm->ShowModal();	
-}
-//---------------------------------------------------------------------------
 
 
 
