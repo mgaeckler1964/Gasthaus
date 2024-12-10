@@ -72,7 +72,7 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=2
 MinorVer=0
-Release=1
+Release=2
 Build=306
 Debug=0
 PreRelease=0
@@ -85,7 +85,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=CRESD GmbH
 FileDescription=Gasthaus Reservierung Hauptprogramm
-FileVersion=2.0.1.306
+FileVersion=2.0.2.306
 InternalName=Gasthaus
 LegalCopyright=(c) 1999-2013 by CRESD GmbH
 LegalTrademarks=
