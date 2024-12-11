@@ -45,8 +45,8 @@
     <USERDEFINES value="CLIENT_SERVER=0"/>
     <SYSDEFINES value="NO_STRICT;_VIS_NOLIB"/>
     <MAINSOURCE value="gasthaus.cpp"/>
-    <INCLUDEPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include"/>
-    <LIBPATH value="..\GAKLIB\Repository;f:\object\;$(BCB)\ocx;$(BCB)\lib_uk\obj;$(BCB)\lib_uk\release;$(BCB)\lib_uk"/>
+    <INCLUDEPATH value="..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include"/>
+    <LIBPATH value="..\GAKLIB\Repository;$(BCB)\ocx;$(BCB)\lib_ger\obj;$(BCB)\lib_ger"/>
     <WARNINGS value="-w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>
@@ -83,16 +83,16 @@ Locale=1031
 CodePage=1252
 
 [Version Info Keys]
-CompanyName=CRESD GmbH
+CompanyName=Martin Gäckler
 FileDescription=Gasthaus Reservierung Hauptprogramm
 FileVersion=2.0.2.306
 InternalName=Gasthaus
-LegalCopyright=(c) 1999-2013 by CRESD GmbH
+LegalCopyright=(c) 1999-2013 by Martin Gäckler
 LegalTrademarks=
 OriginalFilename=GASTHAUS.EXE
 ProductName=Gasthaus Reservierung
 ProductVersion=2.0.0.0
-Comments=http://www.cresd.de/
+Comments=
 
 [HistoryLists\hlIncludePath]
 Count=4

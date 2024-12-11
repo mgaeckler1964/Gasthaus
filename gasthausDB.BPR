@@ -32,7 +32,7 @@
     <SYSDEFINES value="NO_STRICT;_VIS_NOLIB"/>
     <MAINSOURCE value="gasthausDB.cpp"/>
     <INCLUDEPATH value="..\GAKLIB\Repository;$(BCB)\include;$(BCB)\include\vcl;$(BCB)\ocx;..\gaklib\Include;.."/>
-    <LIBPATH value="..\GAKLIB\Repository;$(BCB)\lib_uk\obj;$(BCB)\lib_uk\release;$(BCB)\lib_uk"/>
+    <LIBPATH value="..\GAKLIB\Repository;$(BCB)\lib_ger\obj;$(BCB)\lib_ger"/>
     <WARNINGS value="-w-par -w-8027 -w-8026"/>
     <WARNOPTSTR value=""/>
   </MACROS>
@@ -69,16 +69,16 @@ Locale=1031
 CodePage=1252
 
 [Version Info Keys]
-CompanyName=CRESD GmbH
+CompanyName=Martin Gäckler
 FileDescription=Gasthausreservierung DB Verwaltung
 FileVersion=2.0.2.36
 InternalName=
-LegalCopyright=(c) 1999-2013 by CRESD GmbH
+LegalCopyright=(c) 1999-2013 by Martin Gäckler
 LegalTrademarks=
 OriginalFilename=
 ProductName=Gasthaus Reservierung
 ProductVersion=2.0.0.0
-Comments=http://www.cresd.de/
+Comments=
 
 [HistoryLists\hlIncludePath]
 Count=8
